@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import {StyleSheet, View} from 'react-native';
 
-class PublicHeader extends Component {
+class PublicHeader extends PureComponent {
   constructor(props) {
     super(props);
   }
