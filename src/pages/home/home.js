@@ -1,21 +1,19 @@
-import React, { Component } from 'react';
-import http from '@/http/http.js';
-// import { Link } from 'react-router-dom';
-// import PropTypes from 'prop-types';
-import './home.less';
+import React, {Component} from 'react';
+import {StyleSheet, Text, View} from 'react-native';
 
-import Menu from '@/components/menu/menu';
-import PublicHeader from '@/components/header/header';
-import HomeContent from './components/content/content';
-import BannerEl from './components/banner/banner';
+import PublicHeader from '../../components/header/header';
 
-// import axios from 'axios';
-// import { homeContentData } from '@/assets/api/api.js';
+// const instructions = Platform.select({
+//   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+//   android:
+//     'Double tap R on your keyboard to reload,\n' +
+//     'Shake or press menu button for dev menu',
+// });
 
-class Home extends Component {
+export default class App extends Component {
   constructor(props) {
     super(props);
-    this.getHomeContentData();
+    // this.getHomeContentData();
   }
 
   static propTypes = {
@@ -39,31 +37,52 @@ class Home extends Component {
     })
   }
 
-  getHomeContentData(){
-    http.get('/homeContentData').then(res => {
-      let homeContentData = res.data.data;
-      this.setState({
-        homeContentData
-      })
-    });
-  }
+  // getHomeContentData(){
+  //   http.get('/homeContentData').then(res => {
+  //     let homeContentData = res.data.data;
+  //     this.setState({
+  //       homeContentData
+  //     })
+  //   });
+  // }
 
 
   render() {
     return (
-      <div className="main">
+      <View>
+        <Text>main</Text>
         {/* header */}
-        <PublicHeader isShowMenu={this.state.isShowMenu} changeMenuState={this.changeMenuState} checkName="home" />
+        <View>
+          <PublicHeader isShowMenu={this.state.isShowMenu} changeMenuState={this.changeMenuState} />
+        </View>
+        
         {/* banner */}
-        {this.state.homeContentData.bannerData && <BannerEl bannerData={this.state.homeContentData.bannerData} />}
+        {/* {this.state.homeContentData.bannerData && <BannerEl bannerData={this.state.homeContentData.bannerData} />} */}
         {/* content */}
-        {this.state.homeContentData.list && <HomeContent homeContentList={this.state.homeContentData.list} />}
+        {/* {this.state.homeContentData.list && <HomeContent homeContentList={this.state.homeContentData.list} />} */}
         {/* menu */}
         {/* {this.state.isShowMenu && <Menu />} */}
-        {<Menu changeMenuStateClose={this.changeMenuStateClose} isShowMenu={this.state.isShowMenu} />}
-      </div>
+        {/* {<Menu changeMenuStateClose={this.changeMenuStateClose} isShowMenu={this.state.isShowMenu} />} */}
+      </View>
     );
   }
 }
 
-export default Home;
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});
